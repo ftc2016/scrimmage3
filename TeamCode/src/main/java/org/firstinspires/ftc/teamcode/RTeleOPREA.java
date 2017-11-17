@@ -48,8 +48,6 @@ public class RTeleOPREA extends OpMode {
         float x1 = -gamepad1.left_stick_x, y1 = gamepad1.left_stick_y;
         float x2 = gamepad1.right_stick_x;
 
-        jewel_vertical.setPosition(-.5);
-
         // Reset variables
         float leftFrontPower = 0;
         float leftBackPower = 0;
@@ -69,10 +67,10 @@ public class RTeleOPREA extends OpMode {
 
         // Handle turning movement
 
-        leftFrontPower += x2;
-        leftBackPower += x2;
-        rightFrontPower -= x2;
-        rightBackPower -= x2;
+        leftFrontPower -= x2;
+        leftBackPower -= x2;
+        rightFrontPower += x2;
+        rightBackPower += x2;
 
         // Scale movement
         double max = Math.max(Math.abs(leftFrontPower), Math.max(Math.abs(leftBackPower),

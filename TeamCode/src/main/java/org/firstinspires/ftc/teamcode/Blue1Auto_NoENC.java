@@ -97,7 +97,7 @@ public class Blue1Auto_NoENC extends LinearOpMode {
             jewelVertical.setPosition(.99);
             sleep(2000);
 
-            if (jewelColor.blue() > jewelColor.red()) {
+            if (jewelColor.blue() < jewelColor.red()) {
                 telemetry.addData("Blue Color:", jewelColor.blue());
                 telemetry.addData("Red Color:", jewelColor.red());
                 telemetry.update();
@@ -121,7 +121,11 @@ public class Blue1Auto_NoENC extends LinearOpMode {
             int centerCount = 0;
             int rightCount = 0;
             for (int i = 0; i < 20; i++) {
-                if (vuMark != RelicRecoveryVuMark.UNKNOWN) {
+
+                vuMark = RelicRecoveryVuMark.from(relicTemplate);
+                sleep (100);
+                if (vuMark != RelicRecoveryVuMark.UNKNOWN)
+                {
                     if (vuMark == RelicRecoveryVuMark.LEFT) {
                         telemetry.addData("Key: ", "Left");
                         telemetry.update();
@@ -147,7 +151,7 @@ public class Blue1Auto_NoENC extends LinearOpMode {
             int sleepTime = 1650;
             // more variable checking
             if (leftCount > centerCount && leftCount > rightCount) {
-                sleepTime = sleepTime + 750;
+                sleepTime = sleepTime - 750;
                 telemetry.addData("Position: ", "Left");
                 telemetry.update();
             } else if (centerCount > leftCount && centerCount > rightCount) {
@@ -157,7 +161,7 @@ public class Blue1Auto_NoENC extends LinearOpMode {
             } else if (rightCount > centerCount && rightCount > leftCount) {
                 telemetry.addData("Position: ", "Right");
                 telemetry.update();
-                sleepTime = sleepTime - 500;
+                sleepTime = sleepTime + 650;
             }
 
             sleep(500);

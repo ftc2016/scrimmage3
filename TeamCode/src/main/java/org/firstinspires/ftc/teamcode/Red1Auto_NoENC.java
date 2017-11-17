@@ -143,7 +143,7 @@ public class Red1Auto_NoENC extends LinearOpMode {
             int sleepTime = 1650;
 
             if (leftCount > centerCount && leftCount > rightCount) {
-                sleepTime = sleepTime + 750;
+                sleepTime = sleepTime + 700;
                 telemetry.addData("Position: ", "Left");
                 telemetry.update();
 
